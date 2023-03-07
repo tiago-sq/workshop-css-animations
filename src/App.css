@@ -1,38 +1,94 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.loading {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
 }
 
-.App-link {
-  color: #61dafb;
+.loading img {
+  width: 125px;
+  animation-name: loading-animation;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-direction: alternate;
+  animation-play-state: paused;
 }
 
-@keyframes App-logo-spin {
+.loading img:hover {
+  animation-play-state: running;
+}
+
+.page h1 {
+  text-align: center;
+  animation-name: title-highlight;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: linear;
+  /* Para controlar o andamento de uma animação */
+  animation-play-state: paused;
+}
+
+.page h1:hover {
+  animation-play-state: running;
+}
+
+
+
+.page {
+  padding: 20px;
+  animation-name: page-animation;
+  animation-duration: 2s;
+  animation-delay: 2s;
+  animation-fill-mode: forwards;
+  opacity: 0;
+}
+
+/* Criar animações, é similar a criar funções no JS */
+@keyframes loading-animation {
+  /* Aqui devemos enxergar os elementos como em uma cena de teatro. */
   from {
+    /* Ponto de partida */
     transform: rotate(0deg);
+    filter: hue-rotate(180deg);
+    width: 125px;
   }
   to {
+    /* Para aonde eu vou */
     transform: rotate(360deg);
+    filter: hue-rotate(0deg);
+    width: 300px;
   }
 }
+
+@keyframes page-animation {
+  0% {
+    opacity: 0;
+    margin-top: 100px;
+  }
+  100% {
+    opacity: 1;
+    margin-top: 0;
+  }
+}
+
+@keyframes title-highlight {
+  from {
+    transform: scale(1);
+    font-weight: 400;
+  }
+  to {
+    transform: scale(1.5);
+    font-weight: bold;
+  }
+}
+
+/* 
+@media screen and (max-width: 600px) {
+  .loading img {
+    animation-name: page-animation;
+    animation-duration: 1s;
+  }
+} */
